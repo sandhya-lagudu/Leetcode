@@ -1,0 +1,19 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        l=[]
+        f=len(nums)
+        nums.sort()
+        for i in range(len(nums)):
+            if nums.count(nums[i])==2:
+                l.append(nums[i])
+                x=nums[i]
+                y=nums.index(x)
+                break
+        nums.remove(nums[y])
+        for i in range(len(nums)):
+            if nums[i]!=(i+1):
+                l.append(i+1)
+                break
+        if len(l)!=2:
+            l.append(f)
+        return l
