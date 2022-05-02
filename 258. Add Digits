@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int ch(int a)
+    {
+       int s=0;
+        while(a>0)
+        {
+            s=s+(a%10);
+            a=a/10;
+        }
+        return s;
+    }
+    int addDigits(int num) {
+        while(num/10>=1)
+        {
+            num=ch(num);
+            
+        }
+        return num;
+    }
+};
