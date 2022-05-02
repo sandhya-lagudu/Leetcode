@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int find(vector<int> v,int a)
+    {
+        int s=-1,e=v.size();
+        int p1=0,p2=v.size()-1;
+        while(s==-1)
+        {
+            if(v[p1]==a)
+                s=p1;
+            p1++;
+        }
+        while(e==v.size())
+        {
+            if(v[p2]==a)
+                e=p2;
+            p2--;
+        }
+        return (e-s+1);
+    }
+    int findShortestSubArray(vector<int>& nums) {
+        unordered_map<int,int> umapf;
+        vector<int> occ;
+        int degree;
+        int diff=nums.size();
+        degree=1;
+        for(int i=0;i<nums.size();i++)
+        {
+            umapf[nums[i]]++;
+        }
+        for(auto x:umapf)
+        {
+            degree=max(degree,x.second);
+        }
+        for(auto x:umapf)
+        {
+            if(x.second==degree)
+            {
+                occ.push_back(x.first);
+            }
+        }
+        for(int i=0;i<occ.size();i++)
+        {
+            diff=min(diff,find(nums,occ[i]));
+        }
+        return diff;
+    }
+};
