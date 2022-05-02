@@ -1,0 +1,8 @@
+class Solution:
+    def sumBase(self, n: int, k: int) -> int:
+        ss=0
+        while(n>0):
+            ss=ss+n%k
+            n=n//k
+            
+        return ss
