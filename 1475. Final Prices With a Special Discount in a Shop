@@ -1,0 +1,28 @@
+class Solution {
+public:
+    
+    vector<int> finalPrices(vector<int>& arr) {
+          stack<pair<int,int>>stk;
+        unordered_map< int , int>hmap;
+        vector<int >ans ;int index=0;
+        for(int i=0;i<arr.size();i++){
+            if(stk.empty()||stk.top().first<arr[i]){
+                stk.push({arr[i],i});
+            }
+            else if (stk.top().first>=arr[i]){
+                hmap[stk.top().second]=arr[i];
+                stk.pop();
+               i--;
+            }
+        }
+        while(!stk.empty()){
+            hmap[stk.top().second]=0;
+           stk.pop();
+        }
+       for(int i=0;i<arr.size();i++){
+          ans.push_back(arr[i]-hmap[i]);
+       } 
+       
+       return ans ;
+    }
+};
