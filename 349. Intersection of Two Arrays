@@ -1,0 +1,17 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        n1=len(nums1)
+        n2=len(nums2)
+        x=max(n1,n2)
+        l=[]
+        f=[]
+        if x==n1:
+            l=nums1
+        else:
+            l=nums2
+        for i in range(x):
+            if (l[i] in nums1) and (l[i] in nums2):
+                f.append(l[i])
+        return set(f)
+                
+            
