@@ -1,0 +1,37 @@
+class Solution {
+public:
+    int countStudents(vector<int>& students, vector<int>& sandwiches) {
+        stack<int> st;
+        queue<int> q;
+        reverse(sandwiches.begin(),sandwiches.end());
+        
+        int n = students.size();
+        for(int i=0;i<n;i++){
+            st.push(sandwiches[i]);
+            q.push(students[i]);
+        }
+        
+        //to count the number of number of students which are moved to end of the queue
+        int count = 0;
+        while(!q.empty()){
+            if(count == q.size())
+                break;
+            //if preference of front student of queue matches , he will take sandwich and leave the queue 
+            if(q.front() == st.top()){
+                q.pop();
+                st.pop();
+                count=0;
+            }
+            else{
+                
+                int ele = q.front();
+                q.pop();
+                q.push(ele);
+                count++;
+            }
+        }
+        return count;
+    }
+
+    
+};
