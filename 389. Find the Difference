@@ -1,0 +1,9 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str: 
+        s1=[x for x in s]
+        t1=[x for x in t]
+        s1.sort()
+        t1.sort()
+        for i in t1:
+            if (i not in s1) or ((i in s1) and (s1.count(i)<t1.count(i))):
+                return i
