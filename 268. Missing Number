@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        
+        int exor1,exor2;
+        exor1=0;
+        exor2=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            exor1=exor1^nums[i];
+        }
+        for(int i=0;i<=nums.size();i++)
+        {
+            exor2=exor2^i;
+        }
+        return exor1^exor2;
+        
+    }
+};
