@@ -1,0 +1,41 @@
+class Solution {
+    void sub(vector<vector<int>>& v,vector<int>& a,int i,vector<int>& s)
+    {
+        if(i==a.size())
+        {
+            return;
+        }
+        if(s.size()!=0)
+        {
+        if(s.back()==a.back())
+        {
+            return;
+        }
+        }
+        if(s.size()!=0)
+        {
+            while(a[i]<=s.back())
+            {
+                i++;
+            }
+        }
+        for(int j=i;j<a.size();j++)
+        {
+            s.push_back(a[j]);
+            v.push_back(s);
+            sub(v,a,j+1,s);
+            s.pop_back();
+        }
+        return;
+    }
+public:
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> v;
+        vector<int> s;
+        v.push_back(s);
+        sort(nums.begin(), nums.end());
+        sub(v,nums,0,s);
+        return v;
+        
+    }
+};
