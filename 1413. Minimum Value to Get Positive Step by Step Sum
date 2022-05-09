@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int minStartValue(vector<int>& nums) {
+        int prefixsum=0;
+        int minval=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            prefixsum=prefixsum+nums[i];
+            minval=min(minval,prefixsum);
+        }
+        return -minval+1;
+    }
+};
